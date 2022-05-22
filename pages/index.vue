@@ -3,7 +3,7 @@
     <section class="h-screen p-5 dark:bg-black">
       <div class="h-full w-full flex relative items-stretch">
         <!-- HERO IMAGE -->
-        <img src="hero.jpg" alt="" class="object-cover w-full h-full" />
+        <img src="@/public/hero.jpg" alt="" class="object-cover w-full h-full" />
         <!-- FRONT PAGE -->
         <div class="absolute w-full h-full top-0 p-5">
           <div class="border-2 border-white w-full h-full"></div>
@@ -95,11 +95,12 @@
 </template>
 
 <script setup lang="ts">
-import { tsAnyKeyword } from "@babel/types";
-import { CalendarOptions, GoogleCalendar, ICalendar, OutlookCalendar } from "datebook";
-import { routerKey } from "vue-router";
+import pkg from '@/node_modules/datebook/dist/datebook.js';
+import {CalendarOptions} from 'datebook'
+const { GoogleCalendar, ICalendar, OutlookCalendar } = pkg;
 
 let picked = ref("iCal");
+const show_backside = ref(false);
 const polterabend_config: CalendarOptions = {
   title: "Polterabend nach dem Standesamt - Hannah & Samuel",
   location: "Altes Rathaus, Darmstadt, Germany",
@@ -111,11 +112,8 @@ const polterabend_ical = new ICalendar(polterabend_config);
 const polterabend_google = new GoogleCalendar(polterabend_config);
 const polterabend_outlook = new OutlookCalendar(polterabend_config);
 
-const show_backside = ref(false);
-
 const get_polterabend_cal = () => {
   let url = "";
-
   switch (picked.value) {
     case "iCal":
       polterabend_ical.download();
@@ -144,7 +142,6 @@ const kirchlich_outlook = new OutlookCalendar(kirchlich_config);
 
 const get_kirchlich_cal = () => {
   let url = "";
-
   switch (picked.value) {
     case "iCal":
       kirchlich_ical.download();
