@@ -1,0 +1,51 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3.2.0
+        with:
+          node-version: '16'
+
+      # Runs a single command using the runners shell
+      - name: Install dependencies
+        run: yarn install
+        
+      - name: Generate Static Files
+        run: yarn generate
+      
+      - name: Push directory to another repository target directory
+  # You may pin to the exact commit or the version.
+  # uses: darkquasar/github-action-push-to-another-repository@4aa3f38a18f50c45b3e7254f2731e6d5b4071d62
+      - uses: darkquasar/github-action-push-to-another-repository@v1.3
+        with:
+          # Source directory from the origin directory
+          source-directory: "/dist"
+          # Target directory on the target repository where files from the source directory of the current repo will be copied to
+          target-directory: "./"
+          # Name of the destination username/organization
+          destination-github-username: samuelspagl
+          # Destination repository
+          destination-repository-name: wedding-page-deploy
+          
