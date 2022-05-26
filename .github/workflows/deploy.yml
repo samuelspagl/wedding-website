@@ -35,15 +35,16 @@ jobs:
       - name: Generate Static Files
         run: yarn generate
       
-      - name: Push directory to another repository target directory
-        uses: darkquasar/github-action-push-to-another-repository@v1.3
+      - name: Push directory to another repository
+        uses: cpina/github-action-push-to-another-repository@v1.4.2
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          # Source directory from the origin directory
-          source-directory: "/dist"
-          # Target directory on the target repository where files from the source directory of the current repo will be copied to
-          target-directory: "./"
-          # Name of the destination username/organization
-          destination-github-username: samuelspagl
-          # Destination repository
-          destination-repository-name: wedding-page-deploy
+          source-directory: 'dist'
+          destination-github-username: 'samuelspagl'
+          destination-repository-name: 'wedding-page-deploy'
+          user-email: samuelsp.music@gmail.com
+          target-branch: main
+        
+
           
