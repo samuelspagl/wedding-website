@@ -3,7 +3,7 @@
     <section class="h-screen p-5 dark:bg-black">
       <div class="h-full w-full flex relative items-stretch">
         <!-- HERO IMAGE -->
-        <img src="@/public/hero.jpg" alt="" class="object-cover w-full h-full" />
+        <img src="/hero.jpg" srcset="/hero_md.jpg 800w, /hero_xl.jpg 1200w" alt="" class="object-cover w-full h-full" />
         <!-- FRONT PAGE -->
         <div class="absolute w-full h-full top-0 p-5">
           <div class="border-2 border-white w-full h-full"></div>
@@ -95,10 +95,9 @@
 </template>
 
 <script setup lang="ts">
-import pkg from '@/node_modules/datebook/dist/datebook.js';
-import {CalendarOptions} from 'datebook'
+import {CalendarOptions} from 'datebook';
+import {default as pkg} from 'datebook';
 const { GoogleCalendar, ICalendar, OutlookCalendar } = pkg;
-
 let picked = ref("iCal");
 const show_backside = ref(false);
 const polterabend_config: CalendarOptions = {
