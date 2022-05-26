@@ -40,7 +40,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: 'dist'
+          source-directory: '.output/public'
           destination-github-username: 'samuelspagl'
           destination-repository-name: 'wedding-page-deploy'
           user-email: samuelsp.music@gmail.com
