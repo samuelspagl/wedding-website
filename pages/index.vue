@@ -6,14 +6,14 @@
         <img src="/hero.jpg" srcset="/hero_md.jpg 800w, /hero_xl.jpg 1200w" alt="" class="object-cover w-full h-full" />
         <!-- FRONT PAGE -->
         <div class="absolute w-full h-full top-0 p-5">
-          <div class="border-2 border-white w-full h-full"></div>
+          <div class="border-[3px] border-white w-full h-full"></div>
         </div>
         <div class="py-3"></div>
         <div class="absolute flex flex-col justify-center items-center w-full h-full">
           <div class="text-white">
-            <h2 class="transform -translate-x-10 text-5xl md:text-8xl lg:text-[150px] font-fancy">Samuel</h2>
+            <h2 class="transform -translate-x-10 text-6xl md:text-8xl lg:text-[150px] font-fancy">Samuel</h2>
             <h2 class="text-center text-xl lg:text-6xl font-serif">&</h2>
-            <h2 class="transform translate-x-10 text-5xl md:text-8xl lg:text-[150px] font-fancy">Hannah</h2>
+            <h2 class="pt-5 transform translate-x-10 text-6xl md:text-8xl lg:text-[150px] font-fancy">Hannah</h2>
           </div>
         </div>
         <!-- BACK PAGE -->
@@ -22,32 +22,18 @@
             <div class="w-full h-full border-2 border-white flex flex-col justify-center items-center text-white space-y-4">
               <h3 class="text-5xl xl:text-9xl font-fancy">Save the date!</h3>
               <p class="font-sans text-sm font-extralight">Wir heiraten und wollen mit dir feiern!</p>
-              <div class="grid grid-cols-2 font-serif text-center w-full max-w-screen-sm">
                 <div class="space-y-4 px-4">
-                  <h5 class="text-sm font-bold">Polterabend</h5>
+                  <h5 class="text-sm font-bold text-center">Kirchliche Trauung + Hochzeitsfeier</h5>
                 </div>
                 <div class="space-y-4 px-4">
-                  <h5 class="text-sm font-bold text-center">Kirchliche Trauung</h5>
-                </div>
-              </div>
-              <div class="grid grid-cols-2 font-serif text-center max-w-screen-sm">
-                <div class="space-y-4 px-4">
-                  <p class="text-xs">
-                    02.02.2023
+                  <p class="text-xs text-center">
+                    📆 04.02.2023
                     <br />
                     <br />
-                    Mit allen, die Bock haben.
+                    Wir freuen uns, wenn du auf auf unserer Hochzeitsfeier mit dabei bist. <br>
+                    Alle weiteren Infos folgen dann in der Einladung.
                   </p>
                 </div>
-                <div class="space-y-4 px-4">
-                  <p class="text-xs">
-                    04.02.2023
-                    <br />
-                    <br />
-                    Gottesdienst mit allen - Feier mit geladenen Gästen.
-                  </p>
-                </div>
-              </div>
               <div class="text-xs font-serif">
                 <p class="text-sm text-center">Kalendarformat</p>
                 <input
@@ -75,14 +61,9 @@
                 />
                 <label for="cal_format_choice_3" class="pr-3">Outlook</label>
               </div>
-              <div class="grid grid-cols-2 font-serif w-full max-w-screen-sm">
-                <div class="px-4 w-full flex justify-center">
-                  <button class="py-2 w-28 text-xs border-white border transition ease-in-out hover:scale-110 delay-150 hover:-translate-y-1" @click="get_polterabend_cal">↑ <br />vormerken</button>
-                </div>
                 <div class="px-4 w-full flex justify-center">
                   <button class="py-2 w-28 text-xs border-white border transition ease-in-out hover:scale-110 delay-150 hover:-translate-y-1" @click="get_kirchlich_cal">↑ <br />vormerken</button>
                 </div>
-              </div>
             </div>
           </div>
         </Transition>
@@ -95,38 +76,11 @@
 </template>
 
 <script setup lang="ts">
-import {CalendarOptions} from 'datebook';
+import {CalendarOptions, /*GoogleCalendar, ICalendar, OutlookCalendar*/} from 'datebook';
 import {default as pkg} from 'datebook';
 const { GoogleCalendar, ICalendar, OutlookCalendar } = pkg;
 let picked = ref("iCal");
 const show_backside = ref(false);
-const polterabend_config: CalendarOptions = {
-  title: "Polterabend nach dem Standesamt - Hannah & Samuel",
-  location: "Altes Rathaus, Darmstadt, Germany",
-  description: "Wir heiraten standesamtlich, und wollen das mit DIR feiern. Sei am Start!",
-  start: new Date("2023-02-02T19:00:00"),
-  end: new Date("2023-02-03T00:00:00"),
-};
-const polterabend_ical = new ICalendar(polterabend_config);
-const polterabend_google = new GoogleCalendar(polterabend_config);
-const polterabend_outlook = new OutlookCalendar(polterabend_config);
-
-const get_polterabend_cal = () => {
-  let url = "";
-  switch (picked.value) {
-    case "iCal":
-      polterabend_ical.download();
-      break;
-    case "Google":
-      url = polterabend_google.render();
-      window.open(url, "_blank");
-      break;
-    case "Outlook":
-      url = polterabend_outlook.render();
-      window.open(url, "_blank");
-      break;
-  }
-};
 
 const kirchlich_config: CalendarOptions = {
   title: "SAFE THE DATE - Samuel & Hannah",
