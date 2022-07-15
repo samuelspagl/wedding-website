@@ -1,6 +1,9 @@
-# Nuxt 3 Minimal Starter
+# Safe the date - Wedding page
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+[![CI](https://github.com/samuelspagl/wedding-website/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/samuelspagl/wedding-website/actions/workflows/deploy.yml)
+
+This is the wedding / safe-the-date page i created for our wedding. 
+It is built upon Nuxt v3 ([more Info](https://v3.nuxt.com))
 
 ## Setup
 
@@ -9,12 +12,6 @@ Make sure to install the dependencies:
 ```bash
 # yarn
 yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
 ```
 
 ## Development Server
