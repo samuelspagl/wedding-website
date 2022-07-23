@@ -31,7 +31,9 @@
                     <br />
                     <br />
                     Wir freuen uns, wenn du auf auf unserer Hochzeitsfeier mit dabei bist. <br>
-                    Alle weiteren Infos folgen dann in der Einladung.
+                    Eine kleine Vorinfo: <br>
+                    Wir planen, ohne Kinder zu feiern.
+                    Alle weiteren Infos folgen dann in der Einladung.<br>
                   </p>
                 </div>
               <div class="text-xs font-serif">
